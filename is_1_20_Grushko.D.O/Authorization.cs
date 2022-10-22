@@ -66,6 +66,7 @@ namespace is_1_20_Grushko.D.O
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+
             try
             {
                 //Запрос в БД на предмет того, если ли строка с подходящим логином и паролем
@@ -116,7 +117,15 @@ namespace is_1_20_Grushko.D.O
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                Application.Exit();
+            }
+            catch { }
+            finally
+            {
+                this.Close();
+            }
         }
     }
 }

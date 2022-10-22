@@ -31,8 +31,8 @@ namespace is_1_20_Grushko.D.O
             {
                 this.Show();
                 label1.Text = Auth.auth_fio;
-                string[] fll = { label1.Text };
-                listBox1.Items.AddRange(fll);
+                string[] f11  = { label1.Text };
+               
             }
 
         }
