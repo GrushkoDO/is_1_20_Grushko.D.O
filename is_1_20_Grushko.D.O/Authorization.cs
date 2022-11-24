@@ -127,5 +127,15 @@ namespace is_1_20_Grushko.D.O
                 this.Close();
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void htmlLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
