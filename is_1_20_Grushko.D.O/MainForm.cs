@@ -36,5 +36,10 @@ namespace is_1_20_Grushko.D.O
             }
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
