@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace is_1_20_Grushko.D.O
 {
-    public partial class MainForm : MetroFramework.Forms.MetroForm
+    public partial class MainForm : Form
     {
         
         
@@ -40,6 +40,33 @@ namespace is_1_20_Grushko.D.O
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://vk.com/shortnam8");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm f = new MainForm();
+            f.ShowDialog();     
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

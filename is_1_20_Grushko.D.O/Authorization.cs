@@ -11,13 +11,29 @@ using MySql.Data.MySqlClient;
 
 namespace is_1_20_Grushko.D.O
 {
-    public partial class Authorization : MetroFramework.Forms.MetroForm
+    public partial class Authorization : Form
     {
-         // строка подключения к БД
-        string connStr= "server=chuc.caseum.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
-        //Переменная соединения
+         public void con()
+         {
+            string connStr = "server=chuc.caseum;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+            conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                conn.Close();
+            }
+            catch
+            {
+                string connStrr = "server=10.90.12.110;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+                conn = new MySqlConnection(connStrr);
+            }
+
+         }
+        
+        
         MySqlConnection conn;
-        //Логин и пароль к данной форме Вы сможете посмотреть в БД db_test таблице t_user
+        
+        
         static string sha256 (string randomString)
         {
             var crypt  = new System.Security.Cryptography.SHA256Managed();
@@ -28,6 +44,7 @@ namespace is_1_20_Grushko.D.O
                 hash.Append(theByte.ToString("x2"));
             }
             return hash .ToString();
+            
         }
       
         public void GetUserInfo(string login_employ)
@@ -61,7 +78,7 @@ namespace is_1_20_Grushko.D.O
 
         private void Authorization_Load(object sender, EventArgs e)
         {
-            conn = new MySqlConnection(connStr);
+            con();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
