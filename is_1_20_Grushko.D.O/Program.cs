@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace is_1_20_Grushko.D.O
 {
+ 
     static class Auth
     {
         //Статичное поле, которое хранит значение статуса авторизации

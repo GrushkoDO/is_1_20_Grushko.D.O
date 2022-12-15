@@ -13,16 +13,35 @@ namespace is_1_20_Grushko.D.O
 {
     public partial class MainForm : Form
     {
+        MySqlConnection conn;
         
-        
+        private BindingSource bind = new BindingSource();
+
+        private MySqlDataAdapter data = new MySqlDataAdapter();
+
+        DataTable table = new DataTable();
+
         public MainForm()
         {
             InitializeComponent();
         }
+        public void con()
+        {
+            string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+            conn = new MySqlConnection(connStr);
+            if (conn == null)
+            {
+                string connStr1 = "server=10.90.12.110;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+                conn = new MySqlConnection(connStr1);
+            }
+
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Hide();
+           
 
             Authorization Author = new Authorization();
 
@@ -44,7 +63,7 @@ namespace is_1_20_Grushko.D.O
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -61,12 +80,50 @@ namespace is_1_20_Grushko.D.O
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+           
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            con();
+           
+            conn.Open();
+
+            table.Clear();
+            table.Columns.Clear();
+            string com = "SELECT * FROM Employ";
+
+            data.SelectCommand = new MySqlCommand(com, conn);
+            dataGridView1.DataSource = bind;
+            bind.DataSource = table;
+            data.Fill(table);
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dataGridView1.ColumnHeadersVisible = true;
+
+            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = true;
+            dataGridView1.Columns[4].ReadOnly = true;
+            conn.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

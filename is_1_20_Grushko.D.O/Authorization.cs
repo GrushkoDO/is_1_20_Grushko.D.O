@@ -15,20 +15,15 @@ namespace is_1_20_Grushko.D.O
     {
          public void con()
          {
-            string connStr = "server=chuc.caseum;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+            string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
             conn = new MySqlConnection(connStr);
-            try
+            if (conn == null)
             {
-                conn.Open();
-                conn.Close();
+                string connStr1 = "server=10.90.12.110;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+                conn = new MySqlConnection(connStr1);
             }
-            catch
-            {
-                string connStrr = "server=10.90.12.110;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
-                conn = new MySqlConnection(connStrr);
-            }
-
-         }
+            
+        }
         
         
         MySqlConnection conn;
