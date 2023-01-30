@@ -125,5 +125,73 @@ namespace is_1_20_Grushko.D.O
         {
             
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            con();
+
+            conn.Open();
+
+            table.Clear();
+            table.Columns.Clear();
+            string com = "SELECT * FROM Purchase_gasoline";
+
+            data.SelectCommand = new MySqlCommand(com, conn);
+            dataGridView1.DataSource = bind;
+            bind.DataSource = table;
+            data.Fill(table);
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dataGridView1.ColumnHeadersVisible = true;
+
+            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = true;
+            dataGridView1.Columns[4].ReadOnly = true;
+            dataGridView1.Columns[5].ReadOnly = true;
+            conn.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            con();
+
+            conn.Open();
+
+            table.Clear();
+            table.Columns.Clear();
+            string com = "SELECT * FROM Accepted_gasoline";
+
+            data.SelectCommand = new MySqlCommand(com, conn);
+            dataGridView1.DataSource = bind;
+            bind.DataSource = table;
+            data.Fill(table);
+
+            dataGridView1.Columns[0].Visible = false;
+            
+
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dataGridView1.ColumnHeadersVisible = true;
+
+            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = true;
+            dataGridView1.Columns[4].ReadOnly = true;
+            
+            conn.Close();
+        }
     }
 }
