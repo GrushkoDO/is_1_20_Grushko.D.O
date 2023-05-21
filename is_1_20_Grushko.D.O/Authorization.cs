@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
+using System.Threading;
 
 namespace is_1_20_Grushko.D.O
 {
     public partial class Authorization : Form
     {
-         public void con()
+
+        public delegate void ThreadStart();
+        public void con()
          {
-            string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+            string connStr = "server=chuc.sdlik.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
             conn = new MySqlConnection(connStr);
             if (conn == null)
             {
@@ -74,12 +78,12 @@ namespace is_1_20_Grushko.D.O
         private void Authorization_Load(object sender, EventArgs e)
         {
             con();
+            textBox2.UseSystemPasswordChar = true;
+
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        void avt()
         {
-
-            try
+             try
             {
                 //Запрос в БД на предмет того, если ли строка с подходящим логином и паролем
                 string sql = " SELECT * FROM Employ WHERE login_employ = @un and password_employ = @up";
@@ -111,12 +115,15 @@ namespace is_1_20_Grushko.D.O
                     //Достаем данные пользователя в случае успеха
                     GetUserInfo(textBox1.Text);
                     //Закрываем форму
-                    this.Close();
+                    this.Invoke(new MethodInvoker(() => { this.Close(); }));
+
+
                 }
                 else
                 {
                     //Отобразить сообщение о том, что авторизаия неуспешна
                     MessageBox.Show("Неверные данные авторизации!");
+
                 }
             }
             catch(Exception ex)
@@ -124,6 +131,14 @@ namespace is_1_20_Grushko.D.O
                 MessageBox.Show($"{ex.Message}");
 
             }
+}
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            Thread myThread1 = new Thread(avt);
+            myThread1.Start();
+
 
         }
 

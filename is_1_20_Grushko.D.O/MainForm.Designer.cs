@@ -44,6 +44,7 @@
             this.mySqlDataAdapter2 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.mySqlDataAdapter3 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mySqlDataAdapter4 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -242,6 +243,13 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // mySqlDataAdapter4
+            // 
+            this.mySqlDataAdapter4.DeleteCommand = null;
+            this.mySqlDataAdapter4.InsertCommand = null;
+            this.mySqlDataAdapter4.SelectCommand = null;
+            this.mySqlDataAdapter4.UpdateCommand = null;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,6 +289,7 @@
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter2;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter4;
     }
 }
 

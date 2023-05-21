@@ -27,7 +27,7 @@ namespace is_1_20_Grushko.D.O
         }
         public void con()
         {
-            string connStr = "server=chuc.caseum.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
+            string connStr = "server=chuc.sdlik.ru;port=33333;user=st_1_20_9;database=is_1_20_st9_KURS;password=19134029;";
             conn = new MySqlConnection(connStr);
             if (conn == null)
             {
